@@ -10,6 +10,8 @@
     <color name="primary_text_color">#FFFFFF</color>
     <color name="hint_text_color">#ccc</color>
     <color name="secondary_text_color">#000000</color>
-    <color name="main_background_color">#151414</color>
+    <color name="main_background_color">#131313</color>
     <color name="button_background">#0B937C</color>
+    <color name="item_background_color">#1C1C1C</color>
+
 </resources>
