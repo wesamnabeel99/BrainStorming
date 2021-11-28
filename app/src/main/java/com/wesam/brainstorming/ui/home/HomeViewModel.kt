@@ -2,11 +2,11 @@ package com.wesam.brainstorming.ui.home
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
-import com.wesam.brainstorming.model.domain.Note
+import com.wesam.brainstorming.model.entities.Note
 import com.wesam.brainstorming.model.domain.word.WordResponse
 import com.wesam.brainstorming.model.network.State
-import com.wesam.brainstorming.model.repository.NotesRepository
-import com.wesam.brainstorming.model.repository.WordsRepository
+import com.wesam.brainstorming.model.repositories.notes.NotesRepository
+import com.wesam.brainstorming.model.repositories.words.WordsRepository
 import com.wesam.brainstorming.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect

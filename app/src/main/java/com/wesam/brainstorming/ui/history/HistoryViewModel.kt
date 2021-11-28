@@ -1,8 +1,8 @@
 package com.wesam.brainstorming.ui.history
 
 import androidx.lifecycle.viewModelScope
-import com.wesam.brainstorming.model.domain.Note
-import com.wesam.brainstorming.model.repository.NotesRepository
+import com.wesam.brainstorming.model.entities.Note
+import com.wesam.brainstorming.model.repositories.notes.NotesRepository
 import com.wesam.brainstorming.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect

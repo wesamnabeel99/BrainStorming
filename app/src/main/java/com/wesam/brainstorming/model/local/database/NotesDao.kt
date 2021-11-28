@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.wesam.brainstorming.model.domain.Note
+import com.wesam.brainstorming.model.entities.Note
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,5 +17,5 @@ interface NotesDao {
     fun getAllNotes() : Flow<List<Note>>
 
     @Delete
-    suspend fun deleteNote(note:Note)
+    suspend fun deleteNote(note: Note)
 }
