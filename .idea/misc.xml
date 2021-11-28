@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/drawable/button.xml" value="0.14427083333333332" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/drawable/edit_text_background.xml" value="0.15572916666666667" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/drawable/edittext_background.xml" value="0.15572916666666667" />
+        <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/drawable/ic_baseline_sticky_note_2_24.xml" value="0.15572916666666667" />
         <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/layout/fragment_history.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/Users/Wesam Nabeel/AndroidStudioProjects/BrainStorming/app/src/main/res/layout/fragment_note.xml" value="0.128125" />

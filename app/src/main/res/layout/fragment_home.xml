@@ -13,39 +13,52 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/main_background_color"
-        >
+        android:background="@color/main_background_color">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text"
+            android:background="@drawable/edit_text_background"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:maxLines="9"
             android:layout_margin="16dp"
             android:afterTextChanged="@{(v)->viewModel.request(editText.text)}"
             android:hint="start typing and don't stop.."
-            android:inputType="textAutoComplete"
+            android:letterSpacing="0.05"
+            android:lineSpacingMultiplier="1.0"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
             android:onTextChanged="@{()->viewModel.updateChronometerState()}"
             android:text="@={viewModel.noteContent}"
             app:clearEditTextOnFail="@{viewModel.chronometerTime}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/count_down_timer" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_baseline_sticky_note_2_24"
+            app:layout_constraintStart_toStartOf="@+id/edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/add_button"
+            app:tint="@color/black" />
 
         <Chronometer
             android:id="@+id/count_down_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textColor="@android:color/holo_red_dark"
             android:countDown="true"
             android:text="@={viewModel.chronometerTime}"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_button"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/words_constant"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
             app:restartChronometerOnFail="@{viewModel.chronometerTime}"
             app:startChronometerOver="@{viewModel.isChronometerStopped}" />
 
@@ -53,14 +66,14 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@={viewModel.numberOfWords}"
             android:layout_marginEnd="8dp"
+            android:text="@={viewModel.numberOfWords}"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/count_down_timer"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toStartOf="@+id/words_constant"
-            app:layout_constraintTop_toTopOf="@+id/count_down_timer"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
             app:numberOfWords="@{viewModel.noteContent}"
             tools:text="16 " />
 
@@ -74,19 +87,13 @@
             app:layout_constraintEnd_toEndOf="@+id/edit_text"
             tools:text=" Words" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="#ff0000"
-            app:showWhenError="@{viewModel.word}"
-            tools:visibility="gone" />
-
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_button"
+            style="@style/buttonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{(v) -> viewModel.addNote(editText.text.toString())}"
+            android:text="Save Note"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
