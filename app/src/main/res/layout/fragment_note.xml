@@ -1,26 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
-            type="com.wesam.brainstorming.ui.note.NoteViewModel" />
+            type="com.wesam.brainstorming.ui.home.NoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/main_background_color">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hey this is me, note fragment"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text"
+            android:background="@drawable/edit_text_background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:afterTextChanged="@{(v)->viewModel.request(editText.text)}"
+            android:hint="start typing and don't stop.."
+            android:letterSpacing="0.05"
+            android:lineSpacingMultiplier="1.0"
+            android:gravity="top|start"
+            android:inputType="textMultiLine"
+            android:onTextChanged="@{()->viewModel.updateChronometerState()}"
+            android:text="@={viewModel.noteContent}"
+            app:clearEditTextOnFail="@{viewModel.chronometerTime}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/ic_baseline_sticky_note_2_24"
+            app:layout_constraintStart_toStartOf="@+id/edit_text"
+            app:layout_constraintTop_toBottomOf="@+id/add_button"
+            app:tint="@color/black" />
+
+        <Chronometer
+            android:id="@+id/count_down_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:countDown="true"
+            android:text="@={viewModel.chronometerTime}"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/words_constant"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:restartChronometerOnFail="@{viewModel.chronometerTime}"
+            app:startChronometerOver="@{viewModel.isChronometerStopped}" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@={viewModel.numberOfWords}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toStartOf="@+id/words_constant"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:numberOfWords="@{viewModel.noteContent}"
+            tools:text="16 " />
+
+        <TextView
+            android:id="@+id/words_constant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Words"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="@+id/edit_text"
+            tools:text=" Words" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add_button"
+            style="@style/buttonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{(v) -> viewModel.addNote(editText.text.toString())}"
+            android:text="Save Note"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showWhenGoalIsAchieved="@{viewModel.numberOfWords}"
+            tools:text="add note" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

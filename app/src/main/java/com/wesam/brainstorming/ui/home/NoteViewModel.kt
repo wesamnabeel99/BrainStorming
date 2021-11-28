@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 
 import kotlinx.coroutines.launch
 
-class HomeViewModel : BaseViewModel() {
+class NoteViewModel : BaseViewModel() {
 
     val isChronometerStopped = MutableStateFlow(true)
     val noteContent = MutableStateFlow("")
