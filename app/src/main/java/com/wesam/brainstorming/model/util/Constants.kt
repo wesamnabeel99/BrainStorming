@@ -1,7 +1,6 @@
 package com.wesam.brainstorming.model.util
 
 object Constants {
-    const val TEN_SECONDS = 10000
-    const val FIRST_INDEX = 0
-
+    const val FIVE_SECONDS = 5000
+    const val WORDS_GOAL = 100
 }

@@ -31,23 +31,14 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
     (view.adapter as BaseRecyclerAdapter<T>?)?.setItems(items ?: emptyList())
 }
 
-@BindingAdapter(value = ["app:startOver"])
-fun startOver(chronometer: Chronometer , isTyping:Boolean) {
+@BindingAdapter(value = ["app:startChronometerOver"])
+fun startChronometerOver(chronometer: Chronometer, isTyping:Boolean) {
     val zeroBaseLine = SystemClock.elapsedRealtime()
-    chronometer.base = zeroBaseLine + Constants.TEN_SECONDS
+    chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
     if (isTyping) {
-        chronometer.base = zeroBaseLine + Constants.TEN_SECONDS
+        chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
     } else {
         chronometer.start()
-    }
-}
-
-@BindingAdapter(value=["app:doOnZeroSecondsLeft"])
-fun doOnZeroSecondsLeft(view: View,chronometerSeconds : String) {
-    if (chronometerSeconds[Constants.FIRST_INDEX] == '-') {
-        view.visibility = View.VISIBLE
-    } else {
-        view.visibility = View.GONE
     }
 }
 
@@ -57,10 +48,36 @@ fun calculateWords(textView: TextView ,text: String) {
 }
 
 @BindingAdapter(value = ["app:showWhenGoalIsAchieved"])
-fun showWhenGoalIsAchieved (view: View, text : String) {
-    if(text == "3 Words") {
+fun showWhenGoalIsAchieved (view: View, numberOfWords : String) {
+    if(numberOfWords.toInt() >= Constants.WORDS_GOAL) {
         view.visibility =View.VISIBLE
     } else {
         view.visibility =View.GONE
     }
 }
+
+
+@BindingAdapter(value=["app:showWhenFail"])
+fun showWhenFail(view: View, chronometerSeconds : String) {
+    if (chronometerSeconds.contains("−")) {
+        view.visibility = View.VISIBLE
+    } else {
+        view.visibility = View.GONE
+    }
+}
+
+@BindingAdapter(value = ["app:restartChronometerOnFail"])
+fun restartChronometerOnFail(chronometer: Chronometer, chronometerSeconds : String) {
+    if (chronometerSeconds.contains("−")) {
+        chronometer.stop()
+        val zeroBaseLine = SystemClock.elapsedRealtime()
+        chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
+    }
+}
+@BindingAdapter(value = ["app:clearEditTextOnFail"])
+fun clearEditTextOnFail (editText: EditText , chronometerSeconds: String) {
+    if (chronometerSeconds.contains("−")) {
+        editText.text.clear()
+    }
+}
+

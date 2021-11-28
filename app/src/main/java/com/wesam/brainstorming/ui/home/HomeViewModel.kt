@@ -1,6 +1,5 @@
 package com.wesam.brainstorming.ui.home
 
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.wesam.brainstorming.model.entities.Note
 import com.wesam.brainstorming.model.domain.word.WordResponse
@@ -15,11 +14,10 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : BaseViewModel() {
 
-    val isTyping = MutableStateFlow(true)
+    val isChronometerStopped = MutableStateFlow(true)
     val noteContent = MutableStateFlow("")
-    val numberOfWords = MutableStateFlow("testing")
-    val chronometerSeconds = MutableStateFlow("00:10")
-
+    val numberOfWords = MutableStateFlow("0")
+    val chronometerTime = MutableStateFlow("00:10")
     val word = MutableStateFlow(State.Empty as State<WordResponse?>)
 
 
@@ -29,12 +27,12 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-    fun updateIsTypingState() {
+    fun updateChronometerState() {
         viewModelScope.launch {
-            if (isTyping.value) {
-                isTyping.emit(false)
+            if (isChronometerStopped.value) {
+                isChronometerStopped.emit(false)
             } else {
-                isTyping.emit(true)
+                isChronometerStopped.emit(true)
             }
         }
     }
@@ -44,15 +42,6 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch {
             WordsRepository.getRecommendedWord(text).collect { response ->
                 word.emit(response)
-
-                response.toData()?.let {
-                    if (it.size >= 1) {
-                        Log.i("WWW", "$text --> " + it[0].word.toString())
-                    } else {
-                        Log.i("WWW", "$text --> " + "nothing")
-
-                    }
-                }
             }
         }
     }
