@@ -19,31 +19,70 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="hey.."
+            android:lines="1"
+            android:inputType="textAutoComplete"
+            android:text="@={viewModel.noteContent}"
+            android:onTextChanged="@{()->viewModel.updateIsTypingState()}"
+            android:afterTextChanged="@{(v)->viewModel.request(editText.text)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/edit_text"
+            android:ellipsize="end"
+            android:lines="2"
             android:text="@{String.valueOf(viewModel.word.toData())}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/navigate_button"
             app:showWhenSuccess="@{viewModel.word}" />
+
+        <Chronometer
+            android:id="@+id/count_down_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:countDown="true"
+            android:text="@={viewModel.chronometerSeconds}"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/navigate_button"
+            app:startOver="@{viewModel.isTyping}"
+            />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={viewModel.numberOfWords}"
+            app:numberOfWords="@{viewModel.noteContent}"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/count_down_timer"
+            app:layout_constraintStart_toStartOf="@+id/count_down_timer"
+            app:layout_constraintTop_toBottomOf="@+id/count_down_timer"
+            />
+
         <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text"
+            app:layout_constraintEnd_toEndOf="@+id/count_down_timer"
             app:showWhenLoading="@{viewModel.word}"
-            tools:visibility="gone"/>
+            tools:visibility="gone" />
+
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="#ff0000"
             app:showWhenError="@{viewModel.word}"
-            tools:visibility="gone"/>
+            tools:visibility="gone" />
         <Button
             android:id="@+id/navigate_button"
             android:layout_width="match_parent"
@@ -58,6 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="add note"
+            android:onClick="@{(v) -> viewModel.addNote(editText.text.toString())}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -12,12 +12,33 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 
 import kotlinx.coroutines.launch
-import java.util.*
 
 class HomeViewModel : BaseViewModel() {
 
+    val isTyping = MutableStateFlow(true)
+    val noteContent = MutableStateFlow("")
+    val numberOfWords = MutableStateFlow("testing")
+    val chronometerSeconds = MutableStateFlow("00:10")
 
     val word = MutableStateFlow(State.Empty as State<WordResponse?>)
+
+
+    fun addNote(content: String) {
+        viewModelScope.launch {
+            NotesRepository.insertNote(Note(content = content))
+        }
+    }
+
+    fun updateIsTypingState() {
+        viewModelScope.launch {
+            if (isTyping.value) {
+                isTyping.emit(false)
+            } else {
+                isTyping.emit(true)
+            }
+        }
+    }
+
 
     fun request(text: String) {
         viewModelScope.launch {
@@ -36,9 +57,4 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-    fun addNote(content: String) {
-        viewModelScope.launch {
-            NotesRepository.insertNote(Note(0, content, Calendar.getInstance().time))
-        }
-    }
 }

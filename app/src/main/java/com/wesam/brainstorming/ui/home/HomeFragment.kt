@@ -1,6 +1,6 @@
 package com.wesam.brainstorming.ui.home
 
-import androidx.core.widget.doOnTextChanged
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.wesam.brainstorming.R
 import com.wesam.brainstorming.databinding.FragmentHomeBinding
@@ -16,14 +16,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>() {
         binding.navigateButton.setOnClickListener {
             findNavController().navigate(R.id.historyFragment)
         }
-        binding.editText.doOnTextChanged { text, _, _, _ ->
-            viewModel.request(text.toString())
+        binding.addButton.setOnClickListener {
+            if (viewModel.numberOfWords.value.toInt() >= 3) {
+                it.visibility = View.VISIBLE
+            } else {
+                it.visibility = View.GONE
+            }
         }
 
-        binding.addButton.setOnClickListener {
-            viewModel.addNote(binding.editText.text.toString())
-        }
-        }
+    }
 
 
 }
