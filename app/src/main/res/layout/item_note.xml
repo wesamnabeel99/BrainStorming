@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            :text="hello world i love you"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{item.content}"
@@ -24,5 +24,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="hello world i love you" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{item.date.toGMTString()}"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="1/5/19999" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

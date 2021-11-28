@@ -13,6 +13,6 @@ class HistoryRecyclerAdapter(list: List<Note>,listener: HistoryInteractionListen
         newItemPosition: Int,
         newItems: List<T>,
     ): Boolean {
-        TODO("Not yet implemented")
+      return newItems[newItemPosition] == newItems[oldItemPosition]
     }
 }

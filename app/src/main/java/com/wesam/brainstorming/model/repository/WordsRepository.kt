@@ -5,7 +5,7 @@ import com.wesam.brainstorming.model.network.ApiWrapper
 
 object WordsRepository {
 
-    suspend fun getNextWord() = ApiWrapper.wrapWithFlow { API.apiService.getNextWord() }
+    suspend fun getRecommendedWord(word:String) = ApiWrapper.wrapWithFlow { API.apiService.getNextWord(word) }
 
 }
 

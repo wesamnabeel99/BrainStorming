@@ -4,9 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.wesam.brainstorming.ui.history.HistoryViewModel" />
+
+        <variable
+            name="listener"
+            type="com.wesam.brainstorming.ui.history.HistoryInteractionListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            app:items="@{viewModel.notes}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"

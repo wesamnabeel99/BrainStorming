@@ -8,8 +8,7 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryViewModel>() 
 
     override fun onStart() {
         super.onStart()
-        viewModel.addNote()
-        viewModel.addNote()
+
         viewModel.loadNotes()
         binding.historyRecycler.adapter = HistoryRecyclerAdapter(emptyList(),viewModel)
     }
