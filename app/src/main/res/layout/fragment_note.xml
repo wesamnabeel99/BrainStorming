@@ -39,10 +39,10 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginTop="24dp"
-            android:src="@drawable/ic_baseline_sticky_note_2_24"
+            android:src="@drawable/brainstorm_colored"
             app:layout_constraintStart_toStartOf="@+id/edit_text"
             app:layout_constraintTop_toBottomOf="@+id/add_button"
-            app:tint="@color/black" />
+             />
 
         <Chronometer
             android:id="@+id/count_down_timer"

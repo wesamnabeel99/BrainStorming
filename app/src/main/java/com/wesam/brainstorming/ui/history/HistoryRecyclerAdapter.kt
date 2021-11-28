@@ -13,6 +13,6 @@ class HistoryRecyclerAdapter(list: List<Note>, listener: HistoryInteractionListe
         newItemPosition: Int,
         newItems: List<T>,
     ): Boolean {
-      return newItems[newItemPosition] == newItems[oldItemPosition]
+        return false
     }
 }

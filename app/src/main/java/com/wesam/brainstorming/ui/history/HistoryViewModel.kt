@@ -18,4 +18,10 @@ class HistoryViewModel : BaseViewModel(),HistoryInteractionListener {
             }
         }
     }
+
+    override fun onClickDelete(note: Note) {
+        viewModelScope.launch {
+            NotesRepository.deleteNote(note)
+        }
+    }
 }
