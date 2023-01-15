@@ -1,10 +1,8 @@
-package com.wesam.brainstorming.model.network
+package com.wesam.brainstorming.model.remote.network
 
-import com.wesam.brainstorming.model.domain.word.WordResponse
-import kotlinx.coroutines.flow.Flow
+import com.wesam.brainstorming.model.remote.response.WordResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface WordService {

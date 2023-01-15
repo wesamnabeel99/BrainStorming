@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.model.domain.word
+package com.wesam.brainstorming.model.remote.response
 
 
 import com.google.gson.annotations.SerializedName

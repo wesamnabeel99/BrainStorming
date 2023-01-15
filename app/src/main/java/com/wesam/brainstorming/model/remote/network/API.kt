@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.model.network
+package com.wesam.brainstorming.model.remote.network
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

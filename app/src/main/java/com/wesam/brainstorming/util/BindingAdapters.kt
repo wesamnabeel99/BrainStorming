@@ -6,7 +6,7 @@ import android.widget.Chronometer
 import android.widget.EditText
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.wesam.brainstorming.model.network.State
+import com.wesam.brainstorming.model.remote.network.State
 import androidx.recyclerview.widget.RecyclerView
 import com.wesam.brainstorming.ui.base.BaseRecyclerAdapter
 

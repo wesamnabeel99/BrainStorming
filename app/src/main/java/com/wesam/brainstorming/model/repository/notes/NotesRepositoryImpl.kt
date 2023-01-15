@@ -1,9 +1,9 @@
-package com.wesam.brainstorming.model.repositories.notes
+package com.wesam.brainstorming.model.repository.notes
 
 import com.wesam.brainstorming.model.entities.Note
 import com.wesam.brainstorming.model.local.database.NotesDatabase
 
-object NotesRepository : NotesRepositoryImpl {
+object NotesRepositoryImpl : NotesRepository {
     private val notesDao = NotesDatabase.getInstanceWithoutContext().notesDao()
 
     override suspend fun insertNote(note: Note) {

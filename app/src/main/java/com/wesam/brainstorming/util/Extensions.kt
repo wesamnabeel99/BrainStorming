@@ -1,7 +1,7 @@
 package com.wesam.brainstorming.util
 
 import android.view.View
-import com.wesam.brainstorming.model.network.State
+import com.wesam.brainstorming.model.remote.network.State
 
 fun <T> View.handleErrorState(state: State<T>?) = if (state is State.Error) {
     this.visibility = View.VISIBLE

@@ -2,10 +2,10 @@ package com.wesam.brainstorming.ui.home
 
 import androidx.lifecycle.viewModelScope
 import com.wesam.brainstorming.model.entities.Note
-import com.wesam.brainstorming.model.domain.word.WordResponse
-import com.wesam.brainstorming.model.network.State
-import com.wesam.brainstorming.model.repositories.notes.NotesRepository
-import com.wesam.brainstorming.model.repositories.words.WordsRepository
+import com.wesam.brainstorming.model.remote.response.WordResponse
+import com.wesam.brainstorming.model.remote.network.State
+import com.wesam.brainstorming.model.repository.notes.NotesRepositoryImpl
+import com.wesam.brainstorming.model.repository.words.WordsRepositoryImpl
 import com.wesam.brainstorming.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
@@ -20,10 +20,9 @@ class NoteViewModel : BaseViewModel() {
     val chronometerTime = MutableStateFlow("00:10")
     val word = MutableStateFlow(State.Empty as State<WordResponse?>)
 
-
     fun addNote(content: String) {
         viewModelScope.launch {
-            NotesRepository.insertNote(Note(content = content))
+            NotesRepositoryImpl.insertNote(Note(content = content))
         }
     }
 
@@ -40,7 +39,7 @@ class NoteViewModel : BaseViewModel() {
 
     fun request(text: String) {
         viewModelScope.launch {
-            WordsRepository.getRecommendedWord(text).collect { response ->
+            WordsRepositoryImpl.getRecommendedWord(text).collect { response ->
                 word.emit(response)
             }
         }
