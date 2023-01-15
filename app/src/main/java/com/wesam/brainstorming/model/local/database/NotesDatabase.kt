@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.wesam.brainstorming.model.entities.Note
+import com.wesam.brainstorming.model.local.entities.Note
 
 
 @Database(entities = [Note::class], version = 1)

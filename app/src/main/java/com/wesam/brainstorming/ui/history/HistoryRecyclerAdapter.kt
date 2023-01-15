@@ -1,7 +1,7 @@
 package com.wesam.brainstorming.ui.history
 
 import com.wesam.brainstorming.R
-import com.wesam.brainstorming.model.entities.Note
+import com.wesam.brainstorming.model.local.entities.Note
 import com.wesam.brainstorming.ui.base.BaseRecyclerAdapter
 
 class HistoryRecyclerAdapter(list: List<Note>, listener: HistoryInteractionListener) :

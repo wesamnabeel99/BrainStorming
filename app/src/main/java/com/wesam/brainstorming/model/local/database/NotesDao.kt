@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.wesam.brainstorming.model.entities.Note
+import com.wesam.brainstorming.model.local.entities.Note
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,7 +14,7 @@ interface NotesDao {
     suspend fun insertNote(note: Note)
 
     @Query("SELECT * FROM NOTES_TABLE ORDER BY date DESC")
-    fun getAllNotes() : Flow<List<Note>>
+    fun getAllNotes(): Flow<List<Note>>
 
     @Delete
     suspend fun deleteNote(note: Note)

@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.util
+package com.wesam.brainstorming.ui.util
 
 import android.os.SystemClock
 import android.view.View

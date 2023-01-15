@@ -1,6 +1,6 @@
 package com.wesam.brainstorming.model.repository.notes
 
-import com.wesam.brainstorming.model.entities.Note
+import com.wesam.brainstorming.model.local.entities.Note
 import kotlinx.coroutines.flow.Flow
 
 interface NotesRepository {

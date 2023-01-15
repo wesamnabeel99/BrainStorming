@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.util
+package com.wesam.brainstorming.ui.util
 
 import android.view.View
 import com.wesam.brainstorming.model.remote.network.State

@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.util
+package com.wesam.brainstorming.ui.util
 
 object Constants {
     const val FIVE_SECONDS = 5000
