@@ -34,9 +34,9 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
 @BindingAdapter(value = ["app:startChronometerOver"])
 fun startChronometerOver(chronometer: Chronometer, isTyping:Boolean) {
     val zeroBaseLine = SystemClock.elapsedRealtime()
-    chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
+    chronometer.base = zeroBaseLine + Constants.MINIMUM_TIME
     if (isTyping) {
-        chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
+        chronometer.base = zeroBaseLine + Constants.MINIMUM_TIME
     } else {
         chronometer.start()
     }
@@ -71,7 +71,7 @@ fun restartChronometerOnFail(chronometer: Chronometer, chronometerSeconds : Stri
     if (chronometerSeconds.contains("−")) {
         chronometer.stop()
         val zeroBaseLine = SystemClock.elapsedRealtime()
-        chronometer.base = zeroBaseLine + Constants.FIVE_SECONDS
+        chronometer.base = zeroBaseLine + Constants.MINIMUM_TIME
     }
 }
 @BindingAdapter(value = ["app:clearEditTextOnFail"])

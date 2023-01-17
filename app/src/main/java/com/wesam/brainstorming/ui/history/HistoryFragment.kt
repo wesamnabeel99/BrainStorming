@@ -10,6 +10,10 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryViewModel>() 
         super.onStart()
 
         viewModel.loadNotes()
+        setAdapter()
+    }
+
+    private fun setAdapter() {
         binding.historyRecycler.adapter = HistoryRecyclerAdapter(emptyList(),viewModel)
     }
 
