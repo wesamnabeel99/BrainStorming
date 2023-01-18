@@ -1,10 +1,13 @@
 package com.wesam.brainstorming.ui.history
 
+import androidx.fragment.app.viewModels
 import com.wesam.brainstorming.R
 import com.wesam.brainstorming.databinding.FragmentHistoryBinding
 import com.wesam.brainstorming.ui.base.BaseFragment
 
-class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryViewModel>() {
+class HistoryFragment : BaseFragment<FragmentHistoryBinding>(R.layout.fragment_history) {
+
+    override val viewModel: HistoryViewModel by viewModels()
 
     override fun onStart() {
         super.onStart()
@@ -14,9 +17,6 @@ class HistoryFragment : BaseFragment<FragmentHistoryBinding,HistoryViewModel>() 
     }
 
     private fun setAdapter() {
-        binding.historyRecycler.adapter = HistoryRecyclerAdapter(emptyList(),viewModel)
+        binding.historyRecycler.adapter = HistoryRecyclerAdapter(emptyList(), viewModel)
     }
-
-    override val layoutId = R.layout.fragment_history
-    override val viewModelClass = HistoryViewModel::class.java
 }
