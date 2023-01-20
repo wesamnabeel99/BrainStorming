@@ -4,14 +4,19 @@ import androidx.lifecycle.viewModelScope
 import com.wesam.brainstorming.model.local.entities.Note
 import com.wesam.brainstorming.model.remote.network.State
 import com.wesam.brainstorming.model.remote.response.WordResponse
-import com.wesam.brainstorming.model.repository.notes.NotesRepositoryImpl
-import com.wesam.brainstorming.model.repository.words.WordsRepositoryImpl
+import com.wesam.brainstorming.model.repository.notes.NotesRepository
+import com.wesam.brainstorming.model.repository.words.WordsRepository
 import com.wesam.brainstorming.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class NoteViewModel : BaseViewModel() {
+@HiltViewModel
+class NoteViewModel @Inject constructor(
+    private val notesRepository: NotesRepository,
+    private val wordsRepository: WordsRepository,
+) : BaseViewModel() {
 
     val isChronometerStopped = MutableStateFlow(true)
     val noteContent = MutableStateFlow("")
@@ -21,7 +26,7 @@ class NoteViewModel : BaseViewModel() {
 
     fun addNote(content: String) {
         viewModelScope.launch {
-            NotesRepositoryImpl.insertNote(Note(content = content))
+            notesRepository.insertNote(Note(content = content))
         }
     }
 
@@ -38,7 +43,7 @@ class NoteViewModel : BaseViewModel() {
 
     fun request(text: String) {
         viewModelScope.launch {
-            WordsRepositoryImpl.getRecommendedWord(text).collect { response ->
+            wordsRepository.getRecommendedWord(text).collect { response ->
                 word.emit(response)
             }
         }

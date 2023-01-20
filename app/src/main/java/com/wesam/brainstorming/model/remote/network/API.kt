@@ -6,16 +6,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object API {
-    private const val baseUrl = "https://api.datamuse.com/"
 
-    private val retrofit = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-    val apiService = retrofit.create(WordService::class.java)
-
-}
 
 object ApiWrapper {
     fun <T> wrapWithFlow(function: suspend () -> Response<T>): Flow<State<T?>> = flow {

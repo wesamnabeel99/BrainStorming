@@ -1,13 +1,13 @@
 package com.wesam.brainstorming.model.repository.words
 
-import com.wesam.brainstorming.model.remote.network.API
 import com.wesam.brainstorming.model.remote.network.ApiWrapper
+import com.wesam.brainstorming.model.remote.network.WordService
+import javax.inject.Inject
 
-// TODO: convert to regular class and use HILT to inject the dependency
-object WordsRepositoryImpl : WordsRepository {
-
+class WordsRepositoryImpl @Inject constructor(
+    private val apiService: WordService
+) : WordsRepository {
     override suspend fun getRecommendedWord(word: String) =
-        ApiWrapper.wrapWithFlow { API.apiService.getNextWord(word) }
-
+        ApiWrapper.wrapWithFlow { apiService.getNextWord(word) }
 }
 

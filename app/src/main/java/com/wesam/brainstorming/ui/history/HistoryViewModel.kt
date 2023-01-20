@@ -2,18 +2,22 @@ package com.wesam.brainstorming.ui.history
 
 import androidx.lifecycle.viewModelScope
 import com.wesam.brainstorming.model.local.entities.Note
-import com.wesam.brainstorming.model.repository.notes.NotesRepositoryImpl
+import com.wesam.brainstorming.model.repository.notes.NotesRepository
 import com.wesam.brainstorming.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HistoryViewModel : BaseViewModel(),HistoryInteractionListener {
+@HiltViewModel
+class HistoryViewModel @Inject constructor(
+    private val notesRepository: NotesRepository,
+) : BaseViewModel(), HistoryInteractionListener {
     val notes = MutableStateFlow(listOf<Note>())
 
     fun loadNotes() {
         viewModelScope.launch {
-            NotesRepositoryImpl.getAllNotes().collect {
+            notesRepository.getAllNotes().collect {
                 notes.emit(it)
             }
         }
@@ -21,7 +25,7 @@ class HistoryViewModel : BaseViewModel(),HistoryInteractionListener {
 
     override fun onClickDelete(note: Note) {
         viewModelScope.launch {
-            NotesRepositoryImpl.deleteNote(note)
+            notesRepository.deleteNote(note)
         }
     }
 }
