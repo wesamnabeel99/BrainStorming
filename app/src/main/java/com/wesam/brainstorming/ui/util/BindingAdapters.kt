@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Chronometer
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.wesam.brainstorming.model.remote.network.State
 import androidx.recyclerview.widget.RecyclerView
@@ -13,17 +14,17 @@ import com.wesam.brainstorming.ui.base.BaseRecyclerAdapter
 
 @BindingAdapter(value = ["app:showWhenLoading"])
 fun <T> showWhenLoading(view: View, state: State<T>?) {
-    view.handleLoadingState(state)
+    view.isVisible = state is State.Loading
 }
 
 @BindingAdapter(value = ["app:showWhenError"])
 fun <T> showWhenError(view: View, state: State<T>?) {
-    view.handleErrorState(state)
+    view.isVisible = state is State.Error
 }
 
 @BindingAdapter(value = ["app:showWhenSuccess"])
 fun <T> showWhenSuccess(view: View, state: State<T>?) {
-    view.handleSuccessState(state)
+    view.isVisible = state is State.Success
 }
 
 @BindingAdapter(value = ["app:items"])
