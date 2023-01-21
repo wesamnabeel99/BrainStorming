@@ -50,7 +50,7 @@ fun calculateWords(textView: TextView ,text: String) {
 
 @BindingAdapter(value = ["app:showWhenGoalIsAchieved"])
 fun showWhenGoalIsAchieved (view: View, numberOfWords : String) {
-    if(numberOfWords.toInt() >= Constants.WORDS_GOAL) {
+    if(numberOfWords.toInt() >= Constants.MINIMUM_WORDS_THRESHOLD) {
         view.visibility =View.VISIBLE
     } else {
         view.visibility =View.GONE
