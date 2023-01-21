@@ -1,7 +1,7 @@
 package com.wesam.brainstorming.ui.home
 
 import androidx.lifecycle.viewModelScope
-import com.wesam.brainstorming.model.local.entities.Note
+import com.wesam.brainstorming.model.local.entity.Note
 import com.wesam.brainstorming.model.remote.network.State
 import com.wesam.brainstorming.model.remote.response.WordResponse
 import com.wesam.brainstorming.model.repository.notes.NotesRepository

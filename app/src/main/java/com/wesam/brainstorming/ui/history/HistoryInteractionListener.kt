@@ -1,6 +1,6 @@
 package com.wesam.brainstorming.ui.history
 
-import com.wesam.brainstorming.model.local.entities.Note
+import com.wesam.brainstorming.model.local.entity.Note
 import com.wesam.brainstorming.ui.base.BaseInteractionListener
 
 interface HistoryInteractionListener : BaseInteractionListener {

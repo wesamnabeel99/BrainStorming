@@ -1,7 +1,7 @@
 package com.wesam.brainstorming.ui.history
 
 import androidx.lifecycle.viewModelScope
-import com.wesam.brainstorming.model.local.entities.Note
+import com.wesam.brainstorming.model.local.entity.Note
 import com.wesam.brainstorming.model.repository.notes.NotesRepository
 import com.wesam.brainstorming.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

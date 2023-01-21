@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.model.local.entities
+package com.wesam.brainstorming.model.local.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

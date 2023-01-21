@@ -1,8 +1,7 @@
 package com.wesam.brainstorming.model.repository.notes
 
 import com.wesam.brainstorming.model.local.database.NotesDao
-import com.wesam.brainstorming.model.local.entities.Note
-import com.wesam.brainstorming.model.local.database.NotesDatabase
+import com.wesam.brainstorming.model.local.entity.Note
 import javax.inject.Inject
 
 

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.wesam.brainstorming.model.local.entities.Note" />
+            type="com.wesam.brainstorming.model.local.entity.Note" />
         <variable
             name="listener"
             type="com.wesam.brainstorming.ui.history.HistoryInteractionListener" />
