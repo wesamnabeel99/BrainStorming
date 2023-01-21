@@ -17,11 +17,11 @@ abstract class RepositoryModule {
     @Binds
     abstract fun bindNotesRepository(
         notesRepositoryImpl: NotesRepositoryImpl
-    ) : NotesRepository
+    ): NotesRepository
 
     @ViewModelScoped
     @Binds
     abstract fun bindWordsRepository(
         wordsRepositoryImpl: WordsRepositoryImpl
-    ) : WordsRepository
+    ): WordsRepository
 }
