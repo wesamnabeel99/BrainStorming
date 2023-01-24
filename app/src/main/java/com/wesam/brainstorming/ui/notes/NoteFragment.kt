@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.ui.home
+package com.wesam.brainstorming.ui.notes
 
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController

@@ -1,4 +1,4 @@
-package com.wesam.brainstorming.ui.home
+package com.wesam.brainstorming.ui.notes
 
 import androidx.lifecycle.viewModelScope
 import com.wesam.brainstorming.model.local.entity.Note

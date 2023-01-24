@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.wesam.brainstorming.ui.home.NoteViewModel" />
+            type="com.wesam.brainstorming.ui.notes.NoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
